@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Don Lalo – Conciergerie & Gestion Locative en Espagne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5E6A3;
+    --yellow-dark: #e8d57a;
+    --terracotta: #C1603A;
+    --terracotta-light: #d4795a;
+    --cream: #FAF6ED;
+    --cream-dark: #F0E8D5;
+    --olive: #6B7C4A;
+    --olive-light: #8a9e5e;
+    --dark: #1C1810;
+    --mid: #4A3F2F;
+    --light-text: #7a6e5e;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘Jost’, sans-serif;
+background: var(–cream);
+color: var(–dark);
+overflow-x: hidden;
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar {
+position: fixed;
+top: 0; right: 0; left: 0;
+z-index: 100;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+padding: 12px 40px;
+background: rgba(250, 246, 237, 0.92);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(193,96,58,0.12);
+}
+.lang-bar a.logo-mini {
+margin-right: auto;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.05rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+color: var(–dark);
+text-decoration: none;
+text-transform: uppercase;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.4s;
+}
+.lang-bar a.logo-mini.visible { opacity: 1; pointer-events: all; }
+.lang-btns { display: flex; gap: 6px; }
+.lang-btn {
+background: none; border: 1px solid rgba(193,96,58,0.3);
+padding: 4px 12px; border-radius: 20px;
+font-family: ‘Jost’, sans-serif; font-size: 0.72rem;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: var(–mid); cursor: pointer;
+transition: all 0.2s;
+}
+.lang-btn:hover, .lang-btn.active {
+background: var(–terracotta); border-color: var(–terracotta);
+color: white;
+}
+
+/* ── NAV LINKS ── */
+.nav-links {
+display: flex; gap: 28px; margin-right: 32px;
+}
+.nav-links a {
+font-size: 0.78rem; letter-spacing: 0.1em;
+text-transform: uppercase; color: var(–mid);
+text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(–terracotta); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+background: var(–yellow);
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+text-align: center;
+padding: 120px 40px 80px;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at 60% 40%, rgba(193,96,58,0.08) 0%, transparent 65%),
+radial-gradient(ellipse at 20% 80%, rgba(107,124,74,0.07) 0%, transparent 55%);
+}
+.hero-pattern {
+position: absolute; inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg width=‘60’ height=‘60’ viewBox=‘0 0 60 60’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cg fill=‘none’ fill-rule=‘evenodd’%3E%3Cg fill=’%23C1603A’ fill-opacity=‘0.04’%3E%3Cpath d=‘M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z’/%3E%3C/g%3E%3C/g%3E%3C/svg%3E”);
+}
+.hero-logo {
+width: 160px; margin-bottom: 32px;
+position: relative; z-index: 1;
+animation: fadeUp 1s ease both;
+}
+.hero h1 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(3.2rem, 7vw, 6rem);
+font-weight: 300;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–dark);
+line-height: 1;
+position: relative; z-index: 1;
+animation: fadeUp 1s 0.2s ease both;
+}
+.hero-tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+font-style: italic; font-weight: 300;
+color: var(–mid); margin-top: 16px;
+letter-spacing: 0.05em;
+position: relative; z-index: 1;
+animation: fadeUp 1s 0.35s ease both;
+}
+.hero-divider {
+width: 80px; height: 1px;
+background: var(–terracotta);
+margin: 32px auto;
+position: relative; z-index: 1;
+animation: fadeUp 1s 0.45s ease both;
+}
+.hero-subtitle {
+max-width: 520px;
+font-size: 0.95rem; font-weight: 300;
+color: var(–light-text); line-height: 1.8;
+position: relative; z-index: 1;
+animation: fadeUp 1s 0.55s ease both;
+}
+.hero-btns {
+display: flex; gap: 16px; flex-wrap: wrap;
+justify-content: center; margin-top: 40px;
+position: relative; z-index: 1;
+animation: fadeUp 1s 0.65s ease both;
+}
+.btn-primary {
+background: var(–terracotta); color: white;
+padding: 14px 36px; border: none; cursor: pointer;
+font-family: ‘Jost’, sans-serif; font-size: 0.8rem;
+font-weight: 500; letter-spacing: 0.15em;
+text-transform: uppercase; text-decoration: none;
+display: inline-block;
+transition: all 0.3s; border-radius: 2px;
+}
+.btn-primary:hover { background: var(–terracotta-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(193,96,58,0.25); }
+.btn-outline {
+background: transparent; color: var(–dark);
+padding: 14px 36px; border: 1.5px solid var(–dark); cursor: pointer;
+font-family: ‘Jost’, sans-serif; font-size: 0.8rem;
+font-weight: 500; letter-spacing: 0.15em;
+text-transform: uppercase; text-decoration: none;
+display: inline-block;
+transition: all 0.3s; border-radius: 2px;
+}
+.btn-outline:hover { background: var(–dark); color: white; transform: translateY(-2px); }
+
+.hero-scroll {
+position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+display: flex; flex-direction: column; align-items: center; gap: 8px;
+opacity: 0.5; animation: fadeUp 1s 1s ease both;
+}
+.hero-scroll span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(–mid); }
+.scroll-line { width: 1px; height: 40px; background: var(–terracotta); animation: scrollPulse 2s infinite; }
+
+/* ── SECTION BASE ── */
+section { padding: 100px 40px; }
+.section-label {
+font-size: 0.65rem; letter-spacing: 0.3em;
+text-transform: uppercase; color: var(–terracotta);
+margin-bottom: 16px; display: block;
+}
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2rem, 4vw, 3.2rem);
+font-weight: 400; color: var(–dark);
+line-height: 1.15;
+}
+.section-title em { font-style: italic; color: var(–terracotta); }
+.section-divider {
+width: 50px; height: 2px;
+background: var(–terracotta);
+margin: 24px 0;
+}
+.container { max-width: 1160px; margin: 0 auto; }
+
+/* ── STORY SECTION ── */
+.story {
+background: var(–cream);
+}
+.story-inner {
+display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+align-items: center;
+}
+.story-image-wrap {
+position: relative;
+}
+.story-image {
+width: 100%; aspect-ratio: 3/4;
+background: var(–yellow);
+border-radius: 2px;
+display: flex; align-items: center; justify-content: center;
+overflow: hidden; position: relative;
+}
+.story-image-inner {
+width: 100%; height: 100%;
+background: linear-gradient(135deg, var(–yellow) 0%, var(–yellow-dark) 100%);
+display: flex; align-items: center; justify-content: center;
+}
+.story-image svg { width: 60%; opacity: 0.35; }
+.story-image-accent {
+position: absolute; bottom: -20px; right: -20px;
+width: 120px; height: 120px;
+background: var(–terracotta);
+border-radius: 2px; z-index: -1;
+opacity: 0.6;
+}
+.story-quote {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1.4rem, 2.5vw, 2rem);
+font-style: italic; font-weight: 300;
+color: var(–terracotta); line-height: 1.5;
+margin-bottom: 24px;
+}
+.story-text {
+font-size: 0.95rem; font-weight: 300;
+line-height: 1.9; color: var(–mid);
+margin-bottom: 16px;
+}
+.story-signature {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.3rem; font-style: italic;
+color: var(–olive); margin-top: 32px;
+}
+
+/* ── VALUES ── */
+.values { background: var(–yellow); }
+.values-grid {
+display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+margin-top: 60px;
+}
+.value-card {
+background: rgba(250,246,237,0.6);
+padding: 40px 28px;
+border-radius: 2px;
+border-top: 3px solid var(–terracotta);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.value-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(193,96,58,0.12); }
+.value-icon {
+width: 44px; height: 44px; margin-bottom: 20px;
+color: var(–terracotta);
+}
+.value-card h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.35rem; font-weight: 500;
+color: var(–dark); margin-bottom: 12px;
+}
+.value-card p {
+font-size: 0.88rem; font-weight: 300;
+line-height: 1.8; color: var(–mid);
+}
+
+/* ── SERVICES OWNERS ── */
+.owners { background: var(–cream-dark); }
+.owners-inner {
+display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+align-items: start;
+}
+.services-list { margin-top: 40px; }
+.service-item {
+display: flex; gap: 16px; align-items: flex-start;
+padding: 20px 0; border-bottom: 1px solid rgba(193,96,58,0.12);
+}
+.service-item:first-child { border-top: 1px solid rgba(193,96,58,0.12); }
+.service-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 0.85rem; color: var(–terracotta);
+font-weight: 600; min-width: 24px; padding-top: 2px;
+}
+.service-item h4 {
+font-size: 0.9rem; font-weight: 500;
+color: var(–dark); margin-bottom: 4px; letter-spacing: 0.02em;
+}
+.service-item p {
+font-size: 0.83rem; font-weight: 300;
+color: var(–light-text); line-height: 1.6;
+}
+.owners-visual {
+position: sticky; top: 100px;
+}
+.owners-card {
+background: var(–yellow);
+padding: 48px 40px; border-radius: 2px;
+text-align: center;
+}
+.owners-card-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.7rem; color: var(–dark); margin-bottom: 12px;
+}
+.owners-card p {
+font-size: 0.88rem; font-weight: 300;
+color: var(–mid); line-height: 1.8; margin-bottom: 32px;
+}
+
+/* ── TRAVELERS ── */
+.travelers { background: var(–cream); }
+.travelers-inner {
+display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+align-items: center;
+}
+.experience-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+margin-top: 40px;
+}
+.exp-card {
+background: var(–yellow);
+padding: 28px 22px; border-radius: 2px;
+transition: transform 0.3s;
+}
+.exp-card:hover { transform: translateY(-4px); }
+.exp-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.exp-card h4 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.1rem; color: var(–dark); margin-bottom: 6px;
+}
+.exp-card p {
+font-size: 0.82rem; font-weight: 300;
+color: var(–mid); line-height: 1.6;
+}
+.travelers-visual {
+display: flex; flex-direction: column; gap: 16px;
+}
+.travel-quote {
+background: var(–terracotta);
+padding: 40px 36px; border-radius: 2px;
+color: white;
+}
+.travel-quote blockquote {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.5rem; font-style: italic;
+font-weight: 300; line-height: 1.5;
+}
+.travel-quote cite {
+display: block; margin-top: 16px;
+font-size: 0.78rem; letter-spacing: 0.1em;
+text-transform: uppercase; opacity: 0.75;
+}
+
+/* ── AREAS ── */
+.areas { background: var(–dark); }
+.areas .section-label { color: var(–yellow); }
+.areas .section-title { color: var(–cream); }
+.areas .section-divider { background: var(–yellow); }
+.areas-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+margin-top: 60px;
+}
+.area-card {
+background: rgba(255,255,255,0.04);
+padding: 60px 40px; text-align: center;
+position: relative; overflow: hidden;
+transition: background 0.3s;
+}
+.area-card::before {
+content: ‘’;
+position: absolute; bottom: 0; left: 0; right: 0;
+height: 3px; background: var(–terracotta);
+transform: scaleX(0); transition: transform 0.3s;
+}
+.area-card:hover { background: rgba(255,255,255,0.07); }
+.area-card:hover::before { transform: scaleX(1); }
+.area-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 4rem; font-weight: 300;
+color: rgba(255,255,255,0.05); line-height: 1;
+position: absolute; top: 20px; right: 24px;
+}
+.area-card h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.9rem; color: white; margin-bottom: 12px;
+}
+.area-card p {
+font-size: 0.83rem; color: rgba(255,255,255,0.45);
+font-weight: 300; line-height: 1.7;
+}
+
+/* ── GALLERY ── */
+.gallery { background: var(–cream-dark); }
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: auto auto;
+gap: 12px; margin-top: 48px;
+}
+.gallery-item {
+position: relative; overflow: hidden; border-radius: 2px;
+background: var(–yellow);
+aspect-ratio: 4/3;
+display: flex; align-items: center; justify-content: center;
+cursor: pointer;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/7; }
+.gallery-placeholder {
+width: 100%; height: 100%;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+gap: 12px; padding: 24px;
+background: linear-gradient(135deg, var(–yellow) 0%, rgba(193,96,58,0.08) 100%);
+}
+.gallery-placeholder svg { width: 48px; opacity: 0.25; }
+.gallery-caption {
+position: absolute; bottom: 0; left: 0; right: 0;
+background: linear-gradient(to top, rgba(28,24,16,0.7), transparent);
+padding: 20px 16px 14px;
+font-size: 0.78rem; letter-spacing: 0.08em;
+text-transform: uppercase; color: white; font-weight: 400;
+transform: translateY(100%); transition: transform 0.3s;
+}
+.gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+/* ── CONTACT ── */
+.contact { background: var(–yellow); }
+.contact-inner {
+display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+}
+.contact-info-block {
+display: flex; flex-direction: column; gap: 28px;
+margin-top: 40px;
+}
+.contact-item {
+display: flex; gap: 16px; align-items: flex-start;
+}
+.contact-icon {
+width: 40px; height: 40px; min-width: 40px;
+background: var(–terracotta); border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+color: white;
+}
+.contact-item-text h4 {
+font-size: 0.72rem; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–light-text);
+margin-bottom: 4px;
+}
+.contact-item-text a, .contact-item-text p {
+font-size: 0.95rem; color: var(–dark);
+text-decoration: none; font-weight: 400;
+}
+.contact-item-text a:hover { color: var(–terracotta); }
+
+.contact-form {
+background: var(–cream);
+padding: 48px 44px; border-radius: 2px;
+box-shadow: 0 20px 60px rgba(28,24,16,0.08);
+}
+.contact-form h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.7rem; color: var(–dark); margin-bottom: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label {
+font-size: 0.7rem; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–light-text);
+}
+.form-group input, .form-group textarea, .form-group select {
+background: white; border: 1.5px solid rgba(193,96,58,0.2);
+padding: 12px 16px; font-family: ‘Jost’, sans-serif;
+font-size: 0.9rem; color: var(–dark); border-radius: 2px;
+transition: border-color 0.2s; outline: none;
+font-weight: 300;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+border-color: var(–terracotta);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+/* ── FOOTER ── */
+footer {
+background: var(–dark); color: rgba(255,255,255,0.55);
+padding: 70px 40px 36px;
+}
+.footer-inner {
+max-width: 1160px; margin: 0 auto;
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 48px; padding-bottom: 48px;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.6rem; color: white;
+letter-spacing: 0.1em; text-transform: uppercase;
+margin-bottom: 6px;
+}
+.footer-brand p {
+font-size: 0.78rem; color: var(–terracotta);
+letter-spacing: 0.12em; text-transform: uppercase;
+margin-bottom: 20px;
+}
+.footer-brand .tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1rem; font-style: italic;
+color: rgba(255,255,255,0.35); text-transform: none;
+letter-spacing: 0;
+}
+footer h4 {
+font-size: 0.68rem; letter-spacing: 0.2em;
+text-transform: uppercase; color: rgba(255,255,255,0.3);
+margin-bottom: 16px;
+}
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+footer ul li a {
+font-size: 0.85rem; color: rgba(255,255,255,0.5);
+text-decoration: none; transition: color 0.2s;
+}
+footer ul li a:hover { color: var(–terracotta); }
+footer ul li { font-size: 0.85rem; }
+.social-links { display: flex; gap: 12px; margin-top: 20px; }
+.social-link {
+width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12);
+border-radius: 50%; display: flex; align-items: center; justify-content: center;
+color: rgba(255,255,255,0.4); text-decoration: none;
+transition: all 0.2s; font-size: 0.75rem;
+}
+.social-link:hover { border-color: var(–terracotta); color: var(–terracotta); }
+.footer-bottom {
+max-width: 1160px; margin: 28px auto 0;
+display: flex; justify-content: space-between; align-items: center;
+font-size: 0.75rem; color: rgba(255,255,255,0.2);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+50% { opacity: 1; transform: scaleY(1); }
+}
+.reveal {
+opacity: 0; transform: translateY(32px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── LANGUAGE CONTENT ── */
+[data-lang] { display: none; }
+[data-lang=“fr”] { display: block; }
+span[data-lang] { display: none; }
+span[data-lang=“fr”] { display: inline; }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+section { padding: 70px 24px; }
+.nav-links { display: none; }
+.lang-bar { padding: 12px 24px; }
+.story-inner, .owners-inner, .travelers-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+.story-image { aspect-ratio: 4/3; }
+.owners-visual { position: static; }
+.values-grid { grid-template-columns: 1fr 1fr; }
+.areas-grid { grid-template-columns: 1fr; gap: 2px; }
+.gallery-grid { grid-template-columns: 1fr 1fr; }
+.gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+.experience-grid { grid-template-columns: 1fr; }
+.form-row { grid-template-columns: 1fr; }
+.footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+.footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+.contact-form { padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+.hero h1 { letter-spacing: 0.08em; }
+.hero-btns { flex-direction: column; align-items: center; }
+.values-grid { grid-template-columns: 1fr; }
+.gallery-grid { grid-template-columns: 1fr; }
+.gallery-item:nth-child(1) { grid-column: span 1; aspect-ratio: 4/3; }
+.footer-inner { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav class="lang-bar">
+  <a href="#" class="logo-mini" id="logoMini">Casa Don Lalo</a>
+  <div class="nav-links">
+    <a href="#story"><span data-lang="fr">Notre histoire</span><span data-lang="en">Our story</span><span data-lang="es">Nuestra historia</span></a>
+    <a href="#owners"><span data-lang="fr">Propriétaires</span><span data-lang="en">Owners</span><span data-lang="es">Propietarios</span></a>
+    <a href="#travelers"><span data-lang="fr">Voyageurs</span><span data-lang="en">Travelers</span><span data-lang="es">Viajeros</span></a>
+    <a href="#contact"><span data-lang="fr">Contact</span><span data-lang="en">Contact</span><span data-lang="es">Contacto</span></a>
+  </div>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="top">
+  <div class="hero-pattern"></div>
+  <img class="hero-logo" src="/mnt/user-data/uploads/IMG_0104.jpeg" alt="Casa Don Lalo" onerror="this.style.display='none'">
+  <h1>Casa Don Lalo</h1>
+  <p class="hero-tagline">
+    <span data-lang="fr">Chaque détail compte.</span>
+    <span data-lang="en">Every detail matters.</span>
+    <span data-lang="es">Cada detalle cuenta.</span>
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-subtitle">
+    <span data-lang="fr">Conciergerie & gestion locative saisonnière en Espagne. Un service familial, chaleureux et attentionné — pour vos biens et vos hôtes.</span>
+    <span data-lang="en">Concierge & short-term rental management in Spain. A warm, family-oriented service — for your properties and your guests.</span>
+    <span data-lang="es">Conserjería y gestión de alquileres de temporada en España. Un servicio familiar, cálido y atento — para sus bienes y sus huéspedes.</span>
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">
+      <span data-lang="fr">Confier mon bien</span>
+      <span data-lang="en">Entrust my property</span>
+      <span data-lang="es">Confiar mi propiedad</span>
+    </a>
+    <a href="#contact" class="btn-outline">
+      <span data-lang="fr">Demander un rendez-vous</span>
+      <span data-lang="en">Request an appointment</span>
+      <span data-lang="es">Solicitar una cita</span>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STORY -->
+
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-inner">
+      <div class="story-image-wrap reveal">
+        <div class="story-image">
+          <div class="story-image-inner">
+            <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 280 L40 140 Q40 80 100 80 Q160 80 160 140 L160 280" stroke="#1C1810" stroke-width="6" fill="none"/>
+              <rect x="80" y="200" width="40" height="80" fill="#C1603A" opacity="0.4"/>
+              <rect x="55" y="150" width="30" height="30" fill="none" stroke="#1C1810" stroke-width="3"/>
+              <rect x="115" y="150" width="30" height="30" fill="none" stroke="#1C1810" stroke-width="3"/>
+              <path d="M30 280 L170 280" stroke="#1C1810" stroke-width="4"/>
+              <circle cx="100" cy="60" r="12" fill="#C1603A" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="story-image-accent"></div>
+      </div>
+      <div class="reveal" style="transition-delay: 0.2s">
+        <span class="section-label">
+          <span data-lang="fr">Notre histoire</span>
+          <span data-lang="en">Our story</span>
+          <span data-lang="es">Nuestra historia</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="fr">L'histoire de<br><em>Don Lalo</em></span>
+          <span data-lang="en">The story of<br><em>Don Lalo</em></span>
+          <span data-lang="es">La historia de<br><em>Don Lalo</em></span>
+        </h2>
+        <div class="section-divider"></div>
+        <p class="story-quote">
+          <span data-lang="fr">« Un homme, une âme, une maison — partout où il posait ses valises. »</span>
+          <span data-lang="en">« A man, a soul, a home — wherever he laid down his bags. »</span>
+          <span data-lang="es">« Un hombre, un alma, un hogar — donde quiera que dejara sus maletas. »</span>
+        </p>
+        <p class="story-text">
+          <span data-lang="fr">Casa Don Lalo porte le nom d'Eduardo, affectueusement surnommé Lalo. Artiste espagnol passionné, il dut quitter l'Espagne durant la guerre civile — non par choix, mais par nécessité — pour reconstruire sa vie en France avec pour seul bagage sa sensibilité, son talent et son indéfectible amour de la beauté.</span>
+          <span data-lang="en">Casa Don Lalo bears the name of Eduardo, affectionately known as Lalo. A passionate Spanish artist, he was forced to leave Spain during the civil war — not by choice, but by necessity — to rebuild his life in France, carrying nothing but his sensitivity, his talent, and his unwavering love of beauty.</span>
+          <span data-lang="es">Casa Don Lalo lleva el nombre de Eduardo, cariñosamente llamado Lalo. Artista español apasionado, tuvo que abandonar España durante la guerra civil — no por elección, sino por necesidad — para reconstruir su vida en Francia, cargando solo con su sensibilidad, su talento y su amor inquebrantable por la belleza.</span>
+        </p>
+        <p class="story-text">
+          <span data-lang="fr">Là-bas, il s'épanouit et transmit à sa famille des valeurs qui nous guident encore aujourd'hui : l'authenticité, l'attention aux détails, la générosité et le sens profond de l'hospitalité. Casa Don Lalo, c'est son hommage — et notre engagement.</span>
+          <span data-lang="en">There, he flourished and passed on to his family values that still guide us today: authenticity, attention to detail, generosity, and a deep sense of hospitality. Casa Don Lalo is his tribute — and our commitment.</span>
+          <span data-lang="es">Allí floreció y transmitió a su familia valores que aún nos guían hoy: autenticidad, atención al detalle, generosidad y un profundo sentido de la hospitalidad. Casa Don Lalo es su homenaje — y nuestro compromiso.</span>
+        </p>
+        <p class="story-text">
+          <span data-lang="fr">Chaque propriété que nous gérons, nous la traitons comme si c'était la nôtre. Chaque voyageur que nous accueillons, nous le recevons comme un ami. C'est l'esprit de Don Lalo — vivant, chaleureux et authentique.</span>
+          <span data-lang="en">Every property we manage, we treat as if it were our own. Every traveler we welcome, we receive as a friend. This is the spirit of Don Lalo — alive, warm, and authentic.</span>
+          <span data-lang="es">Cada propiedad que gestionamos, la tratamos como si fuera la nuestra. Cada viajero que acogemos, lo recibimos como un amigo. Este es el espíritu de Don Lalo — vivo, cálido y auténtico.</span>
+        </p>
+        <p class="story-signature">
+          <span data-lang="fr">— Avec amour, la famille Don Lalo</span>
+          <span data-lang="en">— With love, the Don Lalo family</span>
+          <span data-lang="es">— Con amor, la familia Don Lalo</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+
+<section class="values" id="values">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">
+        <span data-lang="fr">Nos valeurs</span>
+        <span data-lang="en">Our values</span>
+        <span data-lang="es">Nuestros valores</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="fr">Ce qui nous <em>définit</em></span>
+        <span data-lang="en">What <em>defines</em> us</span>
+        <span data-lang="es">Lo que nos <em>define</em></span>
+      </h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal" style="transition-delay:0.1s">
+        <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+        </svg>
+        <h3>
+          <span data-lang="fr">Confiance</span>
+          <span data-lang="en">Trust</span>
+          <span data-lang="es">Confianza</span>
+        </h3>
+        <p>
+          <span data-lang="fr">Votre bien est entre de bonnes mains. Nous gérons chaque propriété avec la même rigueur et le même soin que si c'était la nôtre.</span>
+          <span data-lang="en">Your property is in good hands. We manage every property with the same rigor and care as if it were our own.</span>
+          <span data-lang="es">Su propiedad está en buenas manos. Gestionamos cada propiedad con el mismo rigor y cuidado que si fuera la nuestra.</span>
+        </p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:0.2s">
+        <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <h3>
+          <span data-lang="fr">Transparence</span>
+          <span data-lang="en">Transparency</span>
+          <span data-lang="es">Transparencia</span>
+        </h3>
+        <p>
+          <span data-lang="fr">Une communication claire et honnête à chaque étape. Vous êtes informés de tout ce qui concerne votre bien, sans surprise.</span>
+          <span data-lang="en">Clear and honest communication at every step. You are informed of everything concerning your property, with no surprises.</span>
+          <span data-lang="es">Comunicación clara y honesta en cada etapa. Usted es informado de todo lo que concierne a su propiedad, sin sorpresas.</span>
+        </p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:0.3s">
+        <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
+        </svg>
+        <h3>
+          <span data-lang="fr">Soin du détail</span>
+          <span data-lang="en">Attention to detail</span>
+          <span data-lang="es">Atención al detalle</span>
+        </h3>
+        <p>
+          <span data-lang="fr">Chaque détail compte. Chaque coussin bien posé, chaque message bien rédigé, chaque accueil soigné — c'est la signature Casa Don Lalo.</span>
+          <span data-lang="en">Every detail matters. Every cushion perfectly placed, every message carefully written, every welcome thoughtfully crafted — this is the Casa Don Lalo signature.</span>
+          <span data-lang="es">Cada detalle importa. Cada cojín bien colocado, cada mensaje cuidadosamente redactado, cada bienvenida esmerada — esta es la firma Casa Don Lalo.</span>
+        </p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:0.4s">
+        <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+        </svg>
+        <h3>
+          <span data-lang="fr">Esprit familial</span>
+          <span data-lang="en">Family spirit</span>
+          <span data-lang="es">Espíritu familiar</span>
+        </h3>
+        <p>
+          <span data-lang="fr">Nous sommes une conciergerie à taille humaine. Pas une franchise, pas une plateforme froide — mais une équipe engagée, proche et passionnée.</span>
+          <span data-lang="en">We are a human-scale concierge service. Not a franchise, not a cold platform — but a committed, close-knit, passionate team.</span>
+          <span data-lang="es">Somos una conserjería a escala humana. No una franquicia, no una plataforma fría — sino un equipo comprometido, cercano y apasionado.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNERS -->
+
+<section class="owners" id="owners">
+  <div class="container">
+    <div class="owners-inner">
+      <div>
+        <div class="reveal">
+          <span class="section-label">
+            <span data-lang="fr">Pour les propriétaires</span>
+            <span data-lang="en">For property owners</span>
+            <span data-lang="es">Para propietarios</span>
+          </span>
+          <h2 class="section-title">
+            <span data-lang="fr">Votre bien,<br>notre <em>priorité</em></span>
+            <span data-lang="en">Your property,<br>our <em>priority</em></span>
+            <span data-lang="es">Su propiedad,<br>nuestra <em>prioridad</em></span>
+          </h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--mid);max-width:460px">
+            <span data-lang="fr">Casa Don Lalo prend en charge la gestion complète de votre bien en location saisonnière, pour que vous puissiez profiter des revenus en toute sérénité — sans les contraintes du quotidien.</span>
+            <span data-lang="en">Casa Don Lalo takes care of the complete management of your short-term rental, so you can enjoy the income with complete peace of mind — without the day-to-day constraints.</span>
+            <span data-lang="es">Casa Don Lalo se encarga de la gestión completa de su alquiler vacacional, para que pueda disfrutar de los ingresos con total tranquilidad — sin las restricciones del día a día.</span>
+          </p>
+        </div>
+        <div class="services-list reveal" style="transition-delay:0.2s">
+          <div class="service-item">
+            <span class="service-num">01</span>
+            <div>
+              <h4><span data-lang="fr">Gestion locative</span><span data-lang="en">Rental management</span><span data-lang="es">Gestión de alquileres</span></h4>
+              <p><span data-lang="fr">Pilotage complet de votre activité locative, de la stratégie de prix à l'optimisation du calendrier.</span><span data-lang="en">Complete management of your rental activity, from pricing strategy to calendar optimization.</span><span data-lang="es">Gestión completa de su actividad de alquiler, desde la estrategia de precios hasta la optimización del calendario.</span></p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">02</span>
+            <div>
+              <h4><span data-lang="fr">Création & gestion des annonces</span><span data-lang="en">Listing creation & management</span><span data-lang="es">Creación y gestión de anuncios</span></h4>
+              <p><span data-lang="fr">Rédaction professionnelle, photos valorisantes et diffusion sur les principales plateformes.</span><span data-lang="en">Professional writing, flattering photos, and distribution on major platforms.</span><span data-lang="es">Redacción profesional, fotos atractivas y distribución en las principales plataformas.</span></p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">03</span>
+            <div>
+              <h4><span data-lang="fr">Communication avec les voyageurs</span><span data-lang="en">Guest communication</span><span data-lang="es">Comunicación con huéspedes</span></h4>
+              <p><span data-lang="fr">Réponse rapide, gestion des demandes et accompagnement tout au long du séjour.</span><span data-lang="en">Quick response, request handling, and support throughout the stay.</span><span data-lang="es">Respuesta rápida, gestión de solicitudes y acompañamiento durante toda la estancia.</span></p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">04</span>
+            <div>
+              <h4><span data-lang="fr">Check-in & accueil des voyageurs</span><span data-lang="en">Check-in & guest welcome</span><span data-lang="es">Check-in y bienvenida de huéspedes</span></h4>
+              <p><span data-lang="fr">Un accueil chaleureux et personnalisé pour chaque hôte — digne de la réputation Don Lalo.</span><span data-lang="en">A warm and personalized welcome for every guest — worthy of the Don Lalo reputation.</span><span data-lang="es">Una bienvenida cálida y personalizada para cada huésped — digna de la reputación Don Lalo.</span></p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">05</span>
+            <div>
+              <h4><span data-lang="fr">Ménage & préparation du logement</span><span data-lang="en">Cleaning & property preparation</span><span data-lang="es">Limpieza y preparación del alojamiento</span></h4>
+              <p><span data-lang="fr">Préparation soignée entre chaque séjour : propreté irréprochable, linge frais, logement parfait.</span><span data-lang="en">Careful preparation between each stay: impeccable cleanliness, fresh linens, perfect accommodation.</span><span data-lang="es">Preparación cuidadosa entre estancias: limpieza impecable, ropa de cama fresca, alojamiento perfecto.</span></p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">06</span>
+            <div>
+              <h4><span data-lang="fr">Assistance & gestion des imprévus</span><span data-lang="en">Assistance & issue management</span><span data-lang="es">Asistencia y gestión de imprevistos</span></h4>
+              <p><span data-lang="fr">Nous intervenons rapidement pour résoudre tout problème, vous laissant l'esprit libre.</span><span data-lang="en">We respond quickly to resolve any issue, leaving you free from worry.</span><span data-lang="es">Actuamos rápidamente para resolver cualquier problema, dejándole la mente tranquila.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="owners-visual reveal" style="transition-delay:0.3s">
+        <div class="owners-card">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" style="margin-bottom:20px;opacity:0.5">
+            <path d="M10 50 L10 28 Q10 14 30 14 Q50 14 50 28 L50 50" stroke="#C1603A" stroke-width="3" fill="none"/>
+            <rect x="22" y="34" width="16" height="16" fill="#C1603A" opacity="0.3"/>
+            <path d="M6 50 L54 50" stroke="#C1603A" stroke-width="2.5"/>
+          </svg>
+          <div class="owners-card-title">
+            <span data-lang="fr">Propriétaires,<br>faites-nous confiance</span>
+            <span data-lang="en">Property owners,<br>trust us</span>
+            <span data-lang="es">Propietarios,<br>confíen en nosotros</span>
+          </div>
+          <p>
+            <span data-lang="fr">Nous traitons chaque appartement comme le nôtre. Votre tranquillité est notre récompense.</span>
+            <span data-lang="en">We treat every apartment as our own. Your peace of mind is our reward.</span>
+            <span data-lang="es">Tratamos cada apartamento como el nuestro. Su tranquilidad es nuestra recompensa.</span>
+          </p>
+          <a href="#contact" class="btn-primary">
+            <span data-lang="fr">Demander un rendez-vous</span>
+            <span data-lang="en">Request an appointment</span>
+            <span data-lang="es">Solicitar una cita</span>
+          </a>
+        </div>
+        <div style="background:var(--terracotta);padding:28px 32px;margin-top:12px;border-radius:2px">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:white;line-height:1.6">
+            <span data-lang="fr">« Nous gérons votre bien comme si c'était notre maison — avec amour, rigueur et fierté. »</span>
+            <span data-lang="en">« We manage your property as if it were our home — with love, rigor, and pride. »</span>
+            <span data-lang="es">« Gestionamos su propiedad como si fuera nuestra casa — con amor, rigor y orgullo. »</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVELERS -->
+
+<section class="travelers" id="travelers">
+  <div class="container">
+    <div class="travelers-inner">
+      <div>
+        <div class="reveal">
+          <span class="section-label">
+            <span data-lang="fr">Pour les voyageurs</span>
+            <span data-lang="en">For travelers</span>
+            <span data-lang="es">Para viajeros</span>
+          </span>
+          <h2 class="section-title">
+            <span data-lang="fr">Un séjour<br><em>inoubliable</em></span>
+            <span data-lang="en">An<br><em>unforgettable</em> stay</span>
+            <span data-lang="es">Una estancia<br><em>inolvidable</em></span>
+          </h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--mid);max-width:460px;margin-bottom:8px">
+            <span data-lang="fr">Casa Don Lalo ne se contente pas de louer des appartements — nous créons des expériences. Chaque séjour est pensé pour vous faire vous sentir chez vous, ou même mieux.</span>
+            <span data-lang="en">Casa Don Lalo doesn't just rent apartments — we create experiences. Every stay is designed to make you feel at home, or even better.</span>
+            <span data-lang="es">Casa Don Lalo no solo alquila apartamentos — creamos experiencias. Cada estancia está pensada para hacerle sentir como en casa, o incluso mejor.</span>
+          </p>
+        </div>
+        <div class="experience-grid reveal" style="transition-delay:0.2s">
+          <div class="exp-card">
+            <div class="exp-icon">🏡</div>
+            <h4><span data-lang="fr">Accueil personnalisé</span><span data-lang="en">Personalized welcome</span><span data-lang="es">Bienvenida personalizada</span></h4>
+            <p><span data-lang="fr">Un accueil chaleureux et attentionné dès votre arrivée.</span><span data-lang="en">A warm and thoughtful welcome from the moment you arrive.</span><span data-lang="es">Una bienvenida cálida y atenta desde su llegada.</span></p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon">🧺</div>
+            <h4><span data-lang="fr">Paniers de bienvenue</span><span data-lang="en">Welcome baskets</span><span data-lang="es">Cestas de bienvenida</span></h4>
+            <p><span data-lang="fr">Des produits locaux soigneusement sélectionnés pour un début de séjour parfait.</span><span data-lang="en">Carefully selected local products for a perfect start to your stay.</span><span data-lang="es">Productos locales cuidadosamente seleccionados para un comienzo de estancia perfecto.</span></p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon">🛵</div>
+            <h4><span data-lang="fr">Courses & transport</span><span data-lang="en">Grocery & transport</span><span data-lang="es">Compras y transporte</span></h4>
+            <p><span data-lang="fr">Courses à domicile, organisation de transfers, tout est prévu pour vous.</span><span data-lang="en">Home grocery delivery, transfer organization — everything is taken care of for you.</span><span data-lang="es">Compras a domicilio, organización de traslados, todo está previsto para usted.</span></p>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon">🌿</div>
+            <h4><span data-lang="fr">Bien-être & expériences</span><span data-lang="en">Wellness & experiences</span><span data-lang="es">Bienestar y experiencias</span></h4>
+            <p><span data-lang="fr">Massage, activités locales, recommandations authentiques — nous révélons le meilleur de la région.</span><span data-lang="en">Massage, local activities, authentic recommendations — we reveal the very best of the region.</span><span data-lang="es">Masajes, actividades locales, recomendaciones auténticas — revelamos lo mejor de la región.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="travelers-visual reveal" style="transition-delay:0.25s">
+        <div class="travel-quote">
+          <blockquote>
+            <span data-lang="fr">« Ici, vous n'êtes pas un client. Vous êtes notre hôte. »</span>
+            <span data-lang="en">« Here, you are not a client. You are our guest. »</span>
+            <span data-lang="es">« Aquí no es un cliente. Es nuestro huésped. »</span>
+          </blockquote>
+          <cite>— Casa Don Lalo</cite>
+        </div>
+        <div style="background:var(--olive);padding:32px;border-radius:2px">
+          <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px">
+            <span data-lang="fr">Services disponibles</span>
+            <span data-lang="en">Available services</span>
+            <span data-lang="es">Servicios disponibles</span>
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">🛒 <span data-lang="fr">Courses</span><span data-lang="en">Grocery</span><span data-lang="es">Compras</span></span>
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">🚗 <span data-lang="fr">Transport</span><span data-lang="en">Transport</span><span data-lang="es">Transporte</span></span>
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">🧺 <span data-lang="fr">Panier bienvenue</span><span data-lang="en">Welcome basket</span><span data-lang="es">Cesta bienvenida</span></span>
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">💆 <span data-lang="fr">Massage</span><span data-lang="en">Massage</span><span data-lang="es">Masaje</span></span>
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">🗺️ <span data-lang="fr">Excursions</span><span data-lang="en">Excursions</span><span data-lang="es">Excursiones</span></span>
+            <span style="background:rgba(255,255,255,0.12);color:white;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:300">🍽️ <span data-lang="fr">Recommandations</span><span data-lang="en">Recommendations</span><span data-lang="es">Recomendaciones</span></span>
+          </div>
+        </div>
+        <div style="background:var(--cream-dark);padding:28px 32px;border-radius:2px;border-left:3px solid var(--terracotta)">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--mid);line-height:1.6">
+            <span data-lang="fr">Notre équipe est disponible pour vous, tout au long de votre séjour, avec le sourire.</span>
+            <span data-lang="en">Our team is available for you throughout your stay, always with a smile.</span>
+            <span data-lang="es">Nuestro equipo está disponible para usted durante toda su estancia, siempre con una sonrisa.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label">
+        <span data-lang="fr">Notre zone d'intervention</span>
+        <span data-lang="en">Our service area</span>
+        <span data-lang="es">Nuestra zona de actuación</span>
+      </span>
+      <h2 class="section-title" style="color:var(--cream)">
+        <span data-lang="fr">Là où nous <em>opérons</em></span>
+        <span data-lang="en">Where we <em>operate</em></span>
+        <span data-lang="es">Donde <em>operamos</em></span>
+      </h2>
+      <div class="section-divider" style="margin:24px auto;background:var(--yellow)"></div>
+      <p style="font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.45);max-width:520px;margin:0 auto">
+        <span data-lang="fr">Nous couvrons la Costa Blanca et ses environs avec une connaissance locale profonde du territoire.</span>
+        <span data-lang="en">We cover the Costa Blanca and its surroundings with deep local knowledge of the territory.</span>
+        <span data-lang="es">Cubrimos la Costa Blanca y sus alrededores con un profundo conocimiento local del territorio.</span>
+      </p>
+    </div>
+    <div class="areas-grid reveal" style="transition-delay:0.2s">
+      <div class="area-card">
+        <div class="area-num">01</div>
+        <h3>Torrevieja</h3>
+        <p><span data-lang="fr">Ville côtière animée aux eaux cristallines et à l'atmosphère méditerranéenne authentique.</span><span data-lang="en">A vibrant coastal town with crystal waters and an authentic Mediterranean atmosphere.</span><span data-lang="es">Ciudad costera animada con aguas cristalinas y auténtica atmósfera mediterránea.</span></p>
+      </div>
+      <div class="area-card">
+        <div class="area-num">02</div>
+        <h3>Orihuela Costa</h3>
+        <p><span data-lang="fr">Destination prisée avec de belles plages, urbanisations modernes et cadre naturel exceptionnel.</span><span data-lang="en">A sought-after destination with beautiful beaches, modern developments and exceptional natural surroundings.</span><span data-lang="es">Destino privilegiado con bellas playas, urbanizaciones modernas y entorno natural excepcional.</span></p>
+      </div>
+      <div class="area-card">
+        <div class="area-num">03</div>
+        <h3>La Mata</h3>
+        <p><span data-lang="fr">Village authentique au bord du lac salé, apprécié pour sa tranquillité et sa beauté naturelle.</span><span data-lang="en">An authentic village beside the salt lake, appreciated for its tranquility and natural beauty.</span><span data-lang="es">Pueblo auténtico junto al lago salado, apreciado por su tranquilidad y belleza natural.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">
+        <span data-lang="fr">Nos logements</span>
+        <span data-lang="en">Our properties</span>
+        <span data-lang="es">Nuestros alojamientos</span>
+      </span>
+      <h2 class="section-title">
+        <span data-lang="fr">Des espaces <em>soignés</em></span>
+        <span data-lang="en"><em>Carefully</em> curated spaces</span>
+        <span data-lang="es">Espacios <em>cuidados</em></span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid reveal" style="transition-delay:0.2s">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 70 L10 38 Q10 22 40 22 Q70 22 70 38 L70 70" stroke="#C1603A" stroke-width="3" fill="none" opacity="0.4"/>
+            <path d="M5 70 L75 70" stroke="#C1603A" stroke-width="2" opacity="0.4"/>
+            <rect x="28" y="46" width="24" height="24" fill="#C1603A" opacity="0.15"/>
+          </svg>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--light-text)">
+            <span data-lang="fr">Appartement à Torrevieja</span>
+            <span data-lang="en">Apartment in Torrevieja</span>
+            <span data-lang="es">Apartamento en Torrevieja</span>
+          </p>
+        </div>
+        <div class="gallery-caption">
+          <span data-lang="fr">Appartement à Torrevieja</span>
+          <span data-lang="en">Apartment in Torrevieja</span>
+          <span data-lang="es">Apartamento en Torrevieja</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 80 80" fill="none">
+            <rect x="15" y="20" width="50" height="40" rx="2" stroke="#C1603A" stroke-width="2.5" fill="none" opacity="0.4"/>
+            <rect x="30" y="42" width="20" height="18" fill="#C1603A" opacity="0.15"/>
+            <rect x="20" y="28" width="15" height="12" fill="none" stroke="#C1603A" stroke-width="2" opacity="0.3"/>
+            <rect x="45" y="28" width="15" height="12" fill="none" stroke="#C1603A" stroke-width="2" opacity="0.3"/>
+          </svg>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--light-text)">
+            <span data-lang="fr">Villa à Orihuela Costa</span>
+            <span data-lang="en">Villa in Orihuela Costa</span>
+            <span data-lang="es">Villa en Orihuela Costa</span>
+          </p>
+        </div>
+        <div class="gallery-caption">
+          <span data-lang="fr">Villa à Orihuela Costa</span>
+          <span data-lang="en">Villa in Orihuela Costa</span>
+          <span data-lang="es">Villa en Orihuela Costa</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="30" r="16" stroke="#C1603A" stroke-width="2.5" fill="none" opacity="0.4"/>
+            <path d="M24 60 Q40 48 56 60" stroke="#C1603A" stroke-width="2.5" fill="none" opacity="0.3"/>
+            <path d="M32 60 L32 70 M48 60 L48 70" stroke="#C1603A" stroke-width="2" opacity="0.3"/>
+          </svg>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--light-text)">
+            <span data-lang="fr">Appartement à La Mata</span>
+            <span data-lang="en">Apartment in La Mata</span>
+            <span data-lang="es">Apartamento en La Mata</span>
+          </p>
+        </div>
+        <div class="gallery-caption">
+          <span data-lang="fr">Appartement à La Mata</span>
+          <span data-lang="en">Apartment in La Mata</span>
+          <span data-lang="es">Apartamento en La Mata</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 80 80" fill="none">
+            <path d="M20 60 L20 35 L40 20 L60 35 L60 60" stroke="#C1603A" stroke-width="2.5" fill="none" opacity="0.4"/>
+            <rect x="32" y="44" width="16" height="16" fill="#C1603A" opacity="0.15"/>
+            <path d="M15 60 L65 60" stroke="#C1603A" stroke-width="2" opacity="0.4"/>
+          </svg>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--light-text)">
+            <span data-lang="fr">Maison à Torrevieja</span>
+            <span data-lang="en">House in Torrevieja</span>
+            <span data-lang="es">Casa en Torrevieja</span>
+          </p>
+        </div>
+        <div class="gallery-caption">
+          <span data-lang="fr">Maison à Torrevieja</span>
+          <span data-lang="en">House in Torrevieja</span>
+          <span data-lang="es">Casa en Torrevieja</span>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:28px;font-size:0.8rem;color:var(--light-text);font-style:italic;transition-delay:0.3s">
+      <span data-lang="fr">Photos de vos logements à venir — contactez-nous pour intégrer votre bien.</span>
+      <span data-lang="en">Photos of your properties coming soon — contact us to feature your property.</span>
+      <span data-lang="es">Fotos de sus alojamientos próximamente — contáctenos para incluir su propiedad.</span>
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="reveal">
+          <span class="section-label">
+            <span data-lang="fr">Nous contacter</span>
+            <span data-lang="en">Contact us</span>
+            <span data-lang="es">Contáctenos</span>
+          </span>
+          <h2 class="section-title">
+            <span data-lang="fr">Parlons de<br>votre <em>projet</em></span>
+            <span data-lang="en">Let's talk about<br>your <em>project</em></span>
+            <span data-lang="es">Hablemos de<br>su <em>proyecto</em></span>
+          </h2>
+          <div class="section-divider"></div>
+          <p style="font-size:0.9rem;font-weight:300;line-height:1.9;color:var(--mid);max-width:400px;margin-bottom:40px">
+            <span data-lang="fr">Que vous soyez propriétaire souhaitant confier votre bien ou voyageur cherchant à réserver, nous sommes là pour vous.</span>
+            <span data-lang="en">Whether you are an owner looking to entrust your property or a traveler looking to book, we are here for you.</span>
+            <span data-lang="es">Ya sea propietario que desea confiar su propiedad o viajero que busca reservar, estamos aquí para usted.</span>
+          </p>
+        </div>
+        <div class="contact-info-block reveal" style="transition-delay:0.2s">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4><span data-lang="fr">Téléphone</span><span data-lang="en">Phone</span><span data-lang="es">Teléfono</span></h4>
+              <a href="tel:+34633964695">+34 633 964 695</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Email</h4>
+              <a href="mailto:delpy.pauline6@gmail.com">delpy.pauline6@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" fill="none" stroke="white" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4><span data-lang="fr">Zone</span><span data-lang="en">Area</span><span data-lang="es">Zona</span></h4>
+              <p>Torrevieja · Orihuela Costa · La Mata</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.25s">
+        <div class="contact-form">
+          <h3>
+            <span data-lang="fr">Demander un rendez-vous</span>
+            <span data-lang="en">Request an appointment</span>
+            <span data-lang="es">Solicitar una cita</span>
+          </h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label><span data-lang="fr">Nom *</span><span data-lang="en">Name *</span><span data-lang="es">Nombre *</span></label>
+              <input type="text" placeholder="Eduardo García">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" placeholder="contact@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label><span data-lang="fr">Téléphone</span><span data-lang="en">Phone</span><span data-lang="es">Teléfono</span></label>
+              <input type="tel" placeholder="+34 ...">
+            </div>
+            <div class="form-group">
+              <label><span data-lang="fr">Localisation du bien</span><span data-lang="en">Property location</span><span data-lang="es">Ubicación del bien</span></label>
+              <select>
+                <option value="">
+                  <span data-lang="fr">Sélectionner</span>
+                  <span data-lang="en">Select</span>
+                  <span data-lang="es">Seleccionar</span>
+                </option>
+                <option>Torrevieja</option>
+                <option>Orihuela Costa</option>
+                <option>La Mata</option>
+                <option>Autre / Other / Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea placeholder="..."></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center;display:block;text-align:center" onclick="alert('Merci pour votre message ! Nous vous contacterons très bientôt. / Thank you for your message! We will contact you very soon. / ¡Gracias por su mensaje! Le contactaremos muy pronto.')">
+            <span data-lang="fr">Envoyer ma demande</span>
+            <span data-lang="en">Send my request</span>
+            <span data-lang="es">Enviar mi solicitud</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h2>Casa Don Lalo</h2>
+      <p>
+        <span data-lang="fr">Conciergerie & Gestion Locative</span>
+        <span data-lang="en">Concierge & Rental Management</span>
+        <span data-lang="es">Conserjería y Gestión de Alquileres</span>
+      </p>
+      <p class="tagline">
+        <span data-lang="fr">Chaque détail compte.</span>
+        <span data-lang="en">Every detail matters.</span>
+        <span data-lang="es">Cada detalle cuenta.</span>
+      </p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Instagram">IG</a>
+        <a href="#" class="social-link" title="Facebook">FB</a>
+        <a href="#" class="social-link" title="WhatsApp">WA</a>
+      </div>
+    </div>
+    <div>
+      <h4><span data-lang="fr">Navigation</span><span data-lang="en">Navigation</span><span data-lang="es">Navegación</span></h4>
+      <ul>
+        <li><a href="#story"><span data-lang="fr">Notre histoire</span><span data-lang="en">Our story</span><span data-lang="es">Nuestra historia</span></a></li>
+        <li><a href="#owners"><span data-lang="fr">Propriétaires</span><span data-lang="en">Owners</span><span data-lang="es">Propietarios</span></a></li>
+        <li><a href="#travelers"><span data-lang="fr">Voyageurs</span><span data-lang="en">Travelers</span><span data-lang="es">Viajeros</span></a></li>
+        <li><a href="#gallery"><span data-lang="fr">Logements</span><span data-lang="en">Properties</span><span data-lang="es">Alojamientos</span></a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4><span data-lang="fr">Zone d'intervention</span><span data-lang="en">Service area</span><span data-lang="es">Zona de actuación</span></h4>
+      <ul>
+        <li>Torrevieja</li>
+        <li>Orihuela Costa</li>
+        <li>La Mata</li>
+        <li style="color:rgba(255,255,255,0.25);font-size:0.78rem;margin-top:8px">Costa Blanca · España</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+34633964695">+34 633 964 695</a></li>
+        <li><a href="mailto:delpy.pauline6@gmail.com">delpy.pauline6@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Casa Don Lalo. 
+      <span data-lang="fr">Tous droits réservés.</span>
+      <span data-lang="en">All rights reserved.</span>
+      <span data-lang="es">Todos los derechos reservados.</span>
+    </span>
+    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;opacity:0.4">
+      <span data-lang="fr">En hommage à Eduardo "Lalo"</span>
+      <span data-lang="en">In tribute to Eduardo "Lalo"</span>
+      <span data-lang="es">En homenaje a Eduardo "Lalo"</span>
+    </span>
+  </div>
+</footer>
+
+<script>
+// Language switching
+function setLang(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+    el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  document.documentElement.lang = lang;
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Show logo in nav on scroll
+const logoMini = document.getElementById('logoMini');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    logoMini.classList.add('visible');
+  } else {
+    logoMini.classList.remove('visible');
+  }
+});
+
+// Init default lang display
+document.querySelectorAll('[data-lang]').forEach(el => {
+  el.style.display = 'none';
+});
+document.querySelectorAll('[data-lang="fr"]').forEach(el => {
+  el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+});
+</script>
+
+</body>
+</html>
